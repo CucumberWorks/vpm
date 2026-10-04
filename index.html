@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CucumberWorks VPM</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --fg: #1c1c21;
+      --muted: #5a5a66;
+      --bg: #ffffff;
+      --line: #d6d6de;
+      --accent: #2456c4;
+      --accent-fg: #ffffff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --fg: #ececf1;
+        --muted: #a4a4ae;
+        --bg: #16161a;
+        --line: #3a3a43;
+        --accent: #7aa2ff;
+        --accent-fg: #0d1222;
+      }
+    }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 40rem; margin: 0 auto; padding: 2.5rem 16px; }
+    h1 { font-size: 1.5rem; margin: 0 0 1.25rem; }
+    h2 { font-size: 1.125rem; margin: 2rem 0 0.25rem; }
+    p { margin: 0.5rem 0; }
+    ul { margin: 0.25rem 0; padding-left: 1.25rem; }
+    code { font-family: ui-monospace, Consolas, monospace; font-size: 0.9em; }
+    .add { display: inline-block; padding: 0.55rem 1rem; border-radius: 6px; background: var(--accent); color: var(--accent-fg); font-weight: 600; text-decoration: none; }
+    .add:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+    .url { display: block; margin: 0.25rem 0 0.75rem; padding: 0.5rem 0.75rem; border: 1px solid var(--line); border-radius: 6px; overflow-wrap: anywhere; user-select: all; }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>CucumberWorks VPM</h1>
+    <p><a class="add" href="vcc://vpm/addRepo?url=https%3A%2F%2Fcucumberworks.github.io%2Fvpm%2Findex.json">Add to VCC</a></p>
+    <p>ALCOM, or VCC by hand: add this repository URL.</p>
+    <code class="url">https://cucumberworks.github.io/vpm/index.json</code>
+    <p class="muted">Pre-release versions show only when pre-release packages are turned on in VCC or ALCOM.</p>
+    <!-- packages -->
+    <section>
+      <h2>SoulFlame VRM Exporter</h2>
+      <p><code>com.soulflame.vrm-exporter</code></p>
+      <ul>
+        <li><code>0.1.0-beta.1</code> (pre-release)</li>
+      </ul>
+    </section>
+    <!-- /packages -->
+  </main>
+</body>
+</html>
