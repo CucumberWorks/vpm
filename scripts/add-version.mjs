@@ -55,6 +55,11 @@ export function zipManifest(buffer) {
 // UniGLTF and VRM-1.0, which com.soulflame.vrm-exporter declares in vpmDependencies.
 const UPSTREAM_PACKAGES = new Set(["com.vrmc.gltf", "com.vrmc.vrm"]);
 
+// An upstream package that needs another of its own release, which its package.json names only in UPM dependencies.
+// VPM clients resolve only vpmDependencies, so the listing entry, not the zip, names it: vrc-get then reports VRM-1.0
+// beside another release's UniGLTF as a conflict instead of installing a pair that does not compile.
+const UPSTREAM_PAIRS = { "com.vrmc.vrm": "com.vrmc.gltf" };
+
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const text = (value) => typeof value === "string" && value.trim().length > 0;
 
@@ -76,6 +81,8 @@ export function checkVersionEntry(name, version, entry) {
     if (!isObject(entry.vpmDependencies)) problems.push(`${where}: vpmDependencies must be an object`);
     else for (const [dependency, range] of Object.entries(entry.vpmDependencies)) if (!text(range)) problems.push(`${where}: vpmDependencies.${dependency} must be a version range`);
   }
+  const pair = UPSTREAM_PAIRS[name];
+  if (pair !== undefined && entry.vpmDependencies?.[pair] !== version) problems.push(`${where}: vpmDependencies must name ${pair} ${version}, the ${pair} of its own release`);
   return problems;
 }
 
@@ -93,7 +100,11 @@ export function checkListing(index) {
       problems.push(`${name}: versions must be an object`);
       continue;
     }
-    for (const [version, manifest] of Object.entries(entry.versions)) problems.push(...checkVersionEntry(name, version, manifest));
+    for (const [version, manifest] of Object.entries(entry.versions)) {
+      problems.push(...checkVersionEntry(name, version, manifest));
+      const pair = UPSTREAM_PAIRS[name];
+      if (pair !== undefined && index.packages[pair]?.versions?.[version] === undefined) problems.push(`${name}@${version}: the listing does not serve ${pair} ${version}, which it needs`);
+    }
   }
   return problems;
 }
@@ -102,7 +113,10 @@ export function checkListing(index) {
 export function addVersion(index, zip, url) {
   const manifest = zipManifest(zip);
   if ("url" in manifest || "zipSHA256" in manifest) throw new Error("the zip's package.json carries url or zipSHA256; the listing adds both");
-  const entry = { ...manifest, url: url ?? `${RELEASES}/${manifest.version}/${manifest.name}-${manifest.version}.zip`, zipSHA256: createHash("sha256").update(zip).digest("hex") };
+  const pair = UPSTREAM_PAIRS[manifest.name];
+  if (pair !== undefined && manifest.dependencies?.[pair] !== manifest.version) throw new Error(`${manifest.name} ${manifest.version} depends on ${pair} ${manifest.dependencies?.[pair] ?? "of no version"}, not of its own release`);
+  const paired = pair === undefined ? {} : { vpmDependencies: { ...manifest.vpmDependencies, [pair]: manifest.version } };
+  const entry = { ...manifest, ...paired, url: url ?? `${RELEASES}/${manifest.version}/${manifest.name}-${manifest.version}.zip`, zipSHA256: createHash("sha256").update(zip).digest("hex") };
   const problems = checkVersionEntry(manifest.name, manifest.version, entry);
   if (problems.length) throw new Error(problems.join("\n"));
   const versions = index.packages?.[manifest.name]?.versions ?? {};

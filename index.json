@@ -139,8 +139,11 @@
               "path": "Samples~/ClothSample"
             }
           ],
+          "vpmDependencies": {
+            "com.vrmc.gltf": "0.131.2"
+          },
           "url": "https://github.com/CucumberWorks/vpm/releases/download/univrm-0.131.2/com.vrmc.vrm-0.131.2.zip",
-          "zipSHA256": "65a7d49ef73fcaf7086e0c86bcfa74a328971a9a992d8507d3f8acad286ffd6d"
+          "zipSHA256": "244e90d30d2ab545611872bcefab97d7a3092283066715bceb16b92f940eab78"
         }
       }
     }
