@@ -11,6 +11,13 @@ Pre-release versions show only when pre-release packages are turned on in VCC or
 | Package | Name |
 | --- | --- |
 | SoulFlame VRM Exporter | `com.soulflame.vrm-exporter` |
+| UniGLTF | `com.vrmc.gltf` |
+| VRM-1.0 | `com.vrmc.vrm` |
+
+UniGLTF and VRM-1.0 are [UniVRM](https://github.com/vrm-c/UniVRM)'s packages (MIT, VRM Consortium), served unchanged
+from the official `VRM-<version>_<hash>.unitypackage` so VCC and ALCOM install them with the exporter. Each release
+serves both packages of one UniVRM release, as assets of the release tagged `univrm-<version>`; add them before the
+exporter version that depends on them, passing the asset URL: `node scripts/add-version.mjs <zip> <url>`.
 
 ## Adding a version
 

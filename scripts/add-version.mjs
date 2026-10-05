@@ -51,6 +51,10 @@ export function zipManifest(buffer) {
   throw new Error("the zip has no package.json at its root, so VCC and ALCOM cannot install it");
 }
 
+// Packages re-served unchanged from their upstream release, whose own package.json names no author email: UniVRM's
+// UniGLTF and VRM-1.0, which com.soulflame.vrm-exporter declares in vpmDependencies.
+const UPSTREAM_PACKAGES = new Set(["com.vrmc.gltf", "com.vrmc.vrm"]);
+
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const text = (value) => typeof value === "string" && value.trim().length > 0;
 
@@ -65,7 +69,7 @@ export function checkVersionEntry(name, version, entry) {
   if (!text(entry.displayName)) problems.push(`${where}: displayName is missing`);
   if (!/^\d+(?:\.\d+)?$/.test(entry.unity ?? "")) problems.push(`${where}: unity must be MAJOR or MAJOR.MINOR, or ALCOM drops the version`);
   if (!isObject(entry.author) || !text(entry.author.name)) problems.push(`${where}: author.name is missing`);
-  else if (!text(entry.author.email)) problems.push(`${where}: author.email is missing`);
+  else if (!text(entry.author.email) && !UPSTREAM_PACKAGES.has(name)) problems.push(`${where}: author.email is missing`);
   if (!/^https:\/\/\S+\.zip$/.test(entry.url ?? "")) problems.push(`${where}: url must be an https address of a .zip`);
   if (!/^[0-9a-f]{64}$/.test(entry.zipSHA256 ?? "")) problems.push(`${where}: zipSHA256 must be 64 lowercase hex digits`);
   if (entry.vpmDependencies !== undefined) {

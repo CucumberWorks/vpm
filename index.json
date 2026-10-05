@@ -67,6 +67,82 @@
           "zipSHA256": "fbf2db8dade0636edd8a16fd3c28b305886eed8641ad8a3e0cf6670fd5aec3da"
         }
       }
+    },
+    "com.vrmc.gltf": {
+      "versions": {
+        "0.131.2": {
+          "name": "com.vrmc.gltf",
+          "version": "0.131.2",
+          "displayName": "UniGLTF",
+          "description": "GLTF importer and exporter",
+          "unity": "2021.3",
+          "keywords": [
+            "gltf"
+          ],
+          "author": {
+            "name": "VRM Consortium"
+          },
+          "dependencies": {
+            "com.unity.modules.animation": "1.0.0",
+            "com.unity.modules.imgui": "1.0.0",
+            "com.unity.modules.imageconversion": "1.0.0",
+            "com.unity.test-framework": "1.4.6",
+            "com.unity.mathematics": "1.2.6"
+          },
+          "samples": [
+            {
+              "displayName": "GltfViewer",
+              "description": "UniGLTF runtime loader sample",
+              "path": "Samples~/GltfViewer"
+            }
+          ],
+          "url": "https://github.com/CucumberWorks/vpm/releases/download/univrm-0.131.2/com.vrmc.gltf-0.131.2.zip",
+          "zipSHA256": "b4548c6f8b6f98da66eacbb22efea68271842aab55caba603a717f413b46df23"
+        }
+      }
+    },
+    "com.vrmc.vrm": {
+      "versions": {
+        "0.131.2": {
+          "name": "com.vrmc.vrm",
+          "version": "0.131.2",
+          "displayName": "VRM-1.0",
+          "description": "VRM-1.0 importer",
+          "unity": "2021.3",
+          "keywords": [
+            "vrm",
+            "importer",
+            "avatar",
+            "vr"
+          ],
+          "author": {
+            "name": "VRM Consortium"
+          },
+          "dependencies": {
+            "com.unity.timeline": "1.7.6",
+            "com.vrmc.gltf": "0.131.2"
+          },
+          "samples": [
+            {
+              "displayName": "VRM10Viewer",
+              "description": "VRM10 runtime loader sample",
+              "path": "Samples~/VRM10Viewer"
+            },
+            {
+              "displayName": "VRM10FirstPersonSample",
+              "description": "First Person layer sample with multi camera",
+              "path": "Samples~/VRM10FirstPersonSample"
+            },
+            {
+              "displayName": "ClothSample",
+              "description": "Experimental cloth implementation",
+              "path": "Samples~/ClothSample"
+            }
+          ],
+          "url": "https://github.com/CucumberWorks/vpm/releases/download/univrm-0.131.2/com.vrmc.vrm-0.131.2.zip",
+          "zipSHA256": "65a7d49ef73fcaf7086e0c86bcfa74a328971a9a992d8507d3f8acad286ffd6d"
+        }
+      }
     }
   }
 }
