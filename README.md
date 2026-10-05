@@ -14,10 +14,14 @@ Pre-release versions show only when pre-release packages are turned on in VCC or
 | UniGLTF | `com.vrmc.gltf` |
 | VRM-1.0 | `com.vrmc.vrm` |
 
-UniGLTF and VRM-1.0 are [UniVRM](https://github.com/vrm-c/UniVRM)'s packages (MIT, VRM Consortium), served unchanged
-from the official `VRM-<version>_<hash>.unitypackage` so VCC and ALCOM install them with the exporter. Each release
-serves both packages of one UniVRM release, as assets of the release tagged `univrm-<version>`; add them before the
-exporter version that depends on them, passing the asset URL: `node scripts/add-version.mjs <zip> <url>`.
+UniGLTF and VRM-1.0 are [UniVRM](https://github.com/vrm-c/UniVRM)'s packages (MIT, VRM Consortium), served with every
+file of the official `VRM-<version>_<hash>.unitypackage` unchanged so VCC and ALCOM install them with the exporter;
+VRM-1.0's zip also carries UniVRM's root `LICENSE.txt` of that release, as upstream keeps no licence file in VRM-1.0.
+Each release serves both packages of one UniVRM release, as assets of the release tagged `univrm-<version>`; add them
+before the exporter version that depends on them, UniGLTF first, passing the asset URL:
+`node scripts/add-version.mjs <zip> <url>`. VRM-1.0's own `package.json` names its UniGLTF only for the Unity package
+manager, so its listing entry adds `vpmDependencies` naming the UniGLTF of the same release; `--check` refuses an entry
+without it, or one whose UniGLTF the listing does not serve.
 
 ## Adding a version
 
