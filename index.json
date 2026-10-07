@@ -134,6 +134,29 @@
           },
           "url": "https://github.com/CucumberWorks/vpm/releases/download/0.3.1/com.soulflame.vrm-exporter-0.3.1.zip",
           "zipSHA256": "bb554ceaede2148236a1766b719d0d454b275ce192ddbc1474bc1caf795ac4c8"
+        },
+        "0.3.2": {
+          "name": "com.soulflame.vrm-exporter",
+          "version": "0.3.2",
+          "displayName": "SoulFlame VRM Exporter",
+          "description": "Captures a source avatar's selected Play Mode appearance and exports one self-contained VRM 1.0 3D model.",
+          "unity": "2022.3",
+          "unityRelease": "22f1",
+          "author": {
+            "name": "CucumberWorks",
+            "email": "86063401+CucumberWorks@users.noreply.github.com",
+            "url": "https://github.com/CucumberWorks"
+          },
+          "license": "MIT",
+          "documentationUrl": "https://cucumberworks.github.io/vpm/",
+          "changelogUrl": "https://github.com/CucumberWorks/vpm/releases",
+          "dependencies": {},
+          "vpmDependencies": {
+            "com.vrmc.gltf": ">=0.131.2 <0.132.0",
+            "com.vrmc.vrm": ">=0.131.2 <0.132.0"
+          },
+          "url": "https://github.com/CucumberWorks/vpm/releases/download/0.3.2/com.soulflame.vrm-exporter-0.3.2.zip",
+          "zipSHA256": "8517818569304e115809293b98f302584bd433b920077947f5f58d09bde01ba2"
         }
       }
     },
