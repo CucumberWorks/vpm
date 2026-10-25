@@ -761,6 +761,32 @@
           },
           "url": "https://github.com/CucumberWorks/vpm/releases/download/0.6.10-beta.5/com.soulflame.vrm-exporter-0.6.10-beta.5.zip",
           "zipSHA256": "47b94dfd87abb24a7bc7d7de8deb1b687e85fb35cbe8c4baec3a5726be26e239"
+        },
+        "0.6.10-beta.6": {
+          "name": "com.soulflame.vrm-exporter",
+          "version": "0.6.10-beta.6",
+          "displayName": "SoulFlame VRM Exporter (VRChat avatar to VRM)",
+          "description": "Converts a VRChat avatar into a VRM 1.0 file (or VRM 0.x for apps such as VSeeFace), as it looks in Play Mode. Open it from VRM > SoulFlame VRM Exporter or Tools > CucumberWorks > SoulFlame VRM Exporter.",
+          "unity": "2022.3",
+          "unityRelease": "22f1",
+          "author": {
+            "name": "CucumberWorks",
+            "email": "86063401+CucumberWorks@users.noreply.github.com",
+            "url": "https://github.com/CucumberWorks"
+          },
+          "license": "MIT",
+          "documentationUrl": "https://cucumberworks.github.io/vpm/",
+          "changelogUrl": "https://github.com/CucumberWorks/vpm/releases",
+          "dependencies": {
+            "com.unity.mathematics": "1.2.6",
+            "com.unity.modules.animation": "1.0.0",
+            "com.unity.modules.imageconversion": "1.0.0",
+            "com.unity.modules.imgui": "1.0.0",
+            "com.unity.timeline": "1.7.6",
+            "com.unity.ugui": "1.0.0"
+          },
+          "url": "https://github.com/CucumberWorks/vpm/releases/download/0.6.10-beta.6/com.soulflame.vrm-exporter-0.6.10-beta.6.zip",
+          "zipSHA256": "dcd4cc0c6f7f2010c74e23f84f856a6ab429ea03070bc6e46df385af9c756da3"
         }
       }
     },
